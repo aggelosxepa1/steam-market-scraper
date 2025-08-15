@@ -40,9 +40,10 @@ while True:
 
 cleaned_user_input: str = re.sub(r"[^\w]", " ", item_type.lower()).strip()
 
-file_path: str = r"Your path\steam_market.xlsx"
+file_path: str = r"C:\Users\Aggelos Xepapadakos\Desktop\Python_Saves\steam_market.xlsx"
 notInclude: List[str] = ["Key", "Case", "Capsule", "Package", "Music Kit", "Sticker", "Patch"]
 proxy_index: int = 0
+timeout: int = 20
 
 def load_proxies(file_path: str = "proxies.txt") -> List[str]:
     try:
@@ -160,14 +161,14 @@ def fetch_single_item_selenium(url: str) -> Optional[List[Any]]:
     try:
         driver.get(url)
         soup_check = BeautifulSoup(driver.page_source, "html.parser")
-        WebDriverWait(driver, 15).until(lambda d: d.execute_script('return document.readyState') == 'complete')
+        WebDriverWait(driver, timeout).until(lambda d: d.execute_script('return document.readyState') == 'complete')
         too_many_requests = soup_check.find("p", class_="sectionText",
                                   string=lambda t: t and "An error was encountered while processing your request:" in t)
         if too_many_requests:
             print("Too many requests on page 1, rotating proxy...")
             driver, proxy_index = rotate_proxy(driver, proxy_index, raw_proxies)
         soup = BeautifulSoup(driver.page_source, "html.parser")
-        WebDriverWait(driver, 20).until(
+        WebDriverWait(driver, timeout).until(
             EC.presence_of_element_located((By.CLASS_NAME, "hover_item_name"))
         )
         title = soup.find("h1", class_="hover_item_name").text.split()
@@ -210,7 +211,7 @@ def fetch_data(proxy_index: int) -> None:
         print(f"Error getting page count: {e}")
         driver, proxy_index = rotate_proxy(driver, proxy_index, raw_proxies)
 
-    WebDriverWait(driver, 20).until(lambda d: d.execute_script('return document.readyState') == 'complete')
+    WebDriverWait(driver, timeout).until(lambda d: d.execute_script('return document.readyState') == 'complete')
 
     too_many_requests = soup.find("p", class_="sectionText",
                                   string=lambda t: t and "An error was encountered while processing your request:" in t)
@@ -233,7 +234,7 @@ def fetch_data(proxy_index: int) -> None:
         driver, proxy_index = rotate_proxy(driver, proxy_index, raw_proxies)
         try:
             driver.get(page_url)
-            WebDriverWait(driver, 20).until(lambda d: d.execute_script('return document.readyState') == 'complete')
+            WebDriverWait(driver, timeout).until(lambda d: d.execute_script('return document.readyState') == 'complete')
             soup = BeautifulSoup(driver.page_source, "html.parser")
             too_many_requests = soup.find("p", class_="sectionText",
                                         string=lambda t: t and "An error was encountered while processing your request:" in t)
@@ -242,9 +243,9 @@ def fetch_data(proxy_index: int) -> None:
                 driver, proxy_index = rotate_proxy(driver, proxy_index, raw_proxies)
                 driver.get(page_url)
 
-            WebDriverWait(driver, 20).until(lambda d: d.execute_script('return document.readyState') == 'complete')
+            WebDriverWait(driver, timeout).until(lambda d: d.execute_script('return document.readyState') == 'complete')
             soup = BeautifulSoup(driver.page_source, "html.parser")
-            WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.CLASS_NAME, "market_listing_row_link")))
+            WebDriverWait(driver, timeout).until(EC.presence_of_element_located((By.CLASS_NAME, "market_listing_row_link")))
 
         except (WebDriverException, TimeoutException, urllib3.exceptions.ReadTimeoutError) as e:
             print(e)
@@ -258,4 +259,3 @@ def fetch_data(proxy_index: int) -> None:
 
 fetch_data(proxy_index)
 print("Finished scraping.")
-

@@ -5,7 +5,8 @@ A script for scraping the Steam Community Market for CS2 items based on a price 
 **Features:**
 - Proxy rotation and async proxy validation
 - Selenium-based dynamic content handling
-- Skips unwanted item types (keys, cases, stickers, etc.)
+- Skips unwanted item types (keys, cases, stickers, capsules,
+  package, music kits and patches)
 - Saves results to Excel with clickable item URLs
 - Handles multiple pages automatically
 

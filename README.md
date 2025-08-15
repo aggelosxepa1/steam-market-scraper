@@ -20,3 +20,6 @@ A script for scraping the Steam Community Market for CS2 items based on a price 
 - urllib3: 1.26.20
 - pandas: 2.3.1
 - openpyxl: 3.1.5
+
+**Note:**  
+The `proxies.txt` file contains free proxies. Free proxies can be slow, unreliable, or may stop working at any time. For more stable performance, consider using paid or private proxies.

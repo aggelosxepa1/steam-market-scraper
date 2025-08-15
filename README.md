@@ -15,7 +15,7 @@ A script for scraping the Steam Community Market for CS2 items based on a price 
 - aiohttp
 - pandas / openpyxl
 
-**Library Versions**
+**Library Versions:**
 - aiohttp: 3.12.15
 - beautifulsoup4: 4.13.4
 - selenium: 4.34.2

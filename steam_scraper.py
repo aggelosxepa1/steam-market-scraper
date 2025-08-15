@@ -1,4 +1,5 @@
 from __future__ import annotations
+from typing import List, Tuple, Optional, Any
 import re
 import asyncio
 import aiohttp
@@ -16,7 +17,6 @@ import pandas as pd
 from openpyxl import load_workbook
 from openpyxl.styles import Font
 import os
-from typing import List, Tuple, Optional, Any
 
 item_type: str | None = None
 min_price: int | None = None
@@ -259,3 +259,4 @@ def fetch_data(proxy_index: int) -> None:
 
 fetch_data(proxy_index)
 print("Finished scraping.")
+

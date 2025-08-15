@@ -24,4 +24,5 @@ A script for scraping the Steam Community Market for CS2 items based on a price 
 
 **Note:**  
 The `proxies.txt` file contains free proxies. Free proxies can be slow, unreliable, or may stop working at any time.
+
 For more stable performance, consider using paid or private proxies.

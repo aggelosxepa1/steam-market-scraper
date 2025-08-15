@@ -23,4 +23,5 @@ A script for scraping the Steam Community Market for CS2 items based on a price 
 - openpyxl: 3.1.5
 
 **Note:**  
-The `proxies.txt` file contains free proxies. Free proxies can be slow, unreliable, or may stop working at any time. For more stable performance, consider using paid or private proxies.
+The `proxies.txt` file contains free proxies. Free proxies can be slow, unreliable, or may stop working at any time.
+For more stable performance, consider using paid or private proxies.

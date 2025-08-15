@@ -24,20 +24,27 @@ max_price: int | None = None
 
 while True:
     try:
-        item_type = input("Enter the item type e.g. gloves, knife: ")
-        if len(item_type) < 2 or item_type.isdigit():
-            raise ValueError
-        min_price = int(input("minimum price (USD): "))
-        if min_price < 1:
-            raise ValueError
-        max_price = int(input("maximum price (USD): "))
-        if max_price <= min_price:
-            raise ValueError
-        break
-    except ValueError as e:
-        print("Value error try again!")
-        print(e)
+        if item_type is None:
+            temp_input = input("Enter the item type e.g. gloves, knife: ")
+            if len(temp_input) < 2 or temp_input.isdigit():
+                raise ValueError("Invalid item type")
+            item_type = temp_input
 
+        if min_price is None:
+            temp_min = int(input("Minimum price (USD): "))
+            if temp_min < 1:
+                raise ValueError("Invalid minimum price")
+            min_price = temp_min
+
+        if max_price is None:
+            temp_max = int(input("Maximum price (USD): "))
+            if temp_max <= min_price:
+                raise ValueError("Maximum price must be greater than minimum price")
+            max_price = temp_max
+        break
+    except (TypeError, ValueError) as e:
+        print(e)
+        
 cleaned_user_input: str = re.sub(r"[^\w]", " ", item_type.lower()).strip()
 
 file_path: str = r"C:\Users\Aggelos Xepapadakos\Desktop\Python_Saves\steam_market.xlsx"
@@ -259,4 +266,5 @@ def fetch_data(proxy_index: int) -> None:
 
 fetch_data(proxy_index)
 print("Finished scraping.")
+
 

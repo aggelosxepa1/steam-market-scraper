@@ -48,7 +48,7 @@ while True:
 cleaned_user_input: str = re.sub(r"[^\w]", " ", item_type.lower()).strip()
 
 file_path: str = r"C:\Users\Aggelos Xepapadakos\Desktop\Python_Saves\steam_market.xlsx"
-notInclude: List[str] = ["Key", "Case", "Capsule", "Package", "Music Kit", "Sticker", "Patch"]
+not_include: List[str] = ["Key", "Case", "Capsule", "Package", "Music Kit", "Sticker", "Patch"]
 proxy_index: int = 0
 timeout: int = 20
 
@@ -179,7 +179,7 @@ def fetch_single_item_selenium(url: str) -> Optional[List[Any]]:
             EC.presence_of_element_located((By.CLASS_NAME, "hover_item_name"))
         )
         title = soup.find("h1", class_="hover_item_name").text.split()
-        if not any(word in notInclude for word in title):
+        if not any(word in not_include for word in title):
             span_tags = soup.find_all("span", class_="market_commodity_orders_header_promote")
             price_str = span_tags[1].text.split("$")[1].split(".")[0]
             price = int(price_str)
@@ -266,5 +266,3 @@ def fetch_data(proxy_index: int) -> None:
 
 fetch_data(proxy_index)
 print("Finished scraping.")
-
-

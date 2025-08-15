@@ -152,9 +152,7 @@ def append_to_excel(file_path: str, row_data: List[Any]) -> None:
     except Exception as e:
         print(f"Error appending to Excel: {e}")
 
-
 driver, proxy_index = asyncio.run(get_working_driver(raw_proxies, proxy_index))
-
 
 def fetch_single_item_selenium(url: str) -> Optional[List[Any]]:
     global proxy_index
@@ -188,7 +186,6 @@ def fetch_single_item_selenium(url: str) -> Optional[List[Any]]:
         driver.quit()
     return None
 
-
 async def get_item_info(a_tags: List[Any]) -> None:
     tasks = []
     for tag in a_tags:
@@ -198,7 +195,6 @@ async def get_item_info(a_tags: List[Any]) -> None:
     results = [r for r in results if r is not None]
     for row in results:
         append_to_excel(file_path, row)
-
 
 def fetch_data(proxy_index: int) -> None:
     url = f"https://steamcommunity.com/market/search?appid=730&q={cleaned_user_input}#p1_price_asc"
@@ -262,3 +258,4 @@ def fetch_data(proxy_index: int) -> None:
 
 fetch_data(proxy_index)
 print("Finished scraping.")
+

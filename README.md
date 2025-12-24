@@ -27,9 +27,9 @@ A script for scraping the Steam Community Market for CS2 items based on the item
     ```
 
 4.  **Configure Proxies**
-    * The script relies on a file named `proxies.txt` in the same directory.
-    * Open `proxies.txt` and add your proxies (one per line).
-    * **Format:** `ip:port` (no empty lines or extra text).
+    * **Quick Start:** The repository **already includes a `proxies.txt` file** pre-loaded with free public proxies. You can run the script immediately without any setup!
+    * **Performance Note:** The included free proxies are often slow or unstable.
+    * **For Better Results:** If you have your own **high-quality paid or private proxies**, simply open `proxies.txt`, delete the existing lines, and paste your own IPs (format: `ip:port`).
     
     **Example content for `proxies.txt`:**
     ```text

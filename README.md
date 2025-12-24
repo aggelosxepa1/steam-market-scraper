@@ -4,6 +4,7 @@
 ![Selenium](https://img.shields.io/badge/Selenium-Automation-green)
 ![Pandas](https://img.shields.io/badge/Pandas-Data%20Processing-blueviolet)
 ![Proxy Rotation](https://img.shields.io/badge/Proxy-Rotation-orange)
+![License](https://img.shields.io/badge/License-MIT-red)
 
 A script for scraping the Steam Community Market for CS2 items based on the item type and price range you choose, filtering items by their latest buy order price instead of listing prices.
 

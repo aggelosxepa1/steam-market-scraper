@@ -1,5 +1,10 @@
 # CS2 Steam Market Buy Order Scraper with Proxy Rotation
 
+![Python](https://img.shields.io/badge/Python-3.10%2B-blue)
+![Selenium](https://img.shields.io/badge/Selenium-Automation-green)
+![Proxy Rotation](https://img.shields.io/badge/Proxy-Rotation-orange)
+![Pandas](https://img.shields.io/badge/Pandas-Data%20Processing-blueviolet)
+
 A script for scraping the Steam Community Market for CS2 items based on the item type and price range you choose, filtering items by their latest buy order price instead of listing prices.
 
 **Features:**
